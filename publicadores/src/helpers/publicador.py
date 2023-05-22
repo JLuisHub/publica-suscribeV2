@@ -24,7 +24,7 @@
 #           +------------------------+--------------------------+-----------------------+
 #
 #-------------------------------------------------------------------------
-import pika
+import stomp
 
 def publish(queue, data):
     connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
