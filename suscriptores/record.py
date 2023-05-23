@@ -80,19 +80,13 @@ class Record:
 
     def consume(self, queue, callback):
         try:
-            '''
-            connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
-            channel = connection.channel()
-            channel.queue_declare(queue=queue, durable=True)
-            channel.basic_qos(prefetch_count=1)
-            channel.basic_consume(on_message_callback=callback, queue=queue)
-            channel.start_consuming()
-            '''
-            conn = stomp.Connection('localhost')
-            conn.start()
+            conn = stomp.Connection(host_and_ports=[('localhost', 8161)])
             conn.connect()
             conn.subscribe(destination=queue, id=1, ack='auto')
             conn.set_listener('', callback)
+            while True:
+                pass
+
         except (KeyboardInterrupt, SystemExit):
             #channel.close()
             conn.disconnect()
