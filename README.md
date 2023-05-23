@@ -6,10 +6,6 @@ Existe un un lugar llamado Seten en el que viven un grupo de adultos mayores, pa
 
 La comunidad llamada Girls that Code in Python, que es una comunidad altruista en la región, decidió, a manera de donación, desarrollarles un sistema de cómputo para realizar las actividades de monitoreo del estado de salud de los adultos mayores de forma (semi-)automática. Para ello, la comunidad utilizó un conjunto de dispositivos “wearables” que portan cada uno de los adultos mayores. Mediante el envío de información sobre ritmo cardiaco, presión arterial y temperatura, estos dispositivos “wearables” permiten monitorear en tiempo real a cada uno de los adultos mayores y de esta forma ser más eficientes en la prevención de incidencias.
 
-En la siguiente figura se muestra el diseño de la propuesta de solución del departamento de desarrollo para el SMAM.
-
-![Vista de contenedores del SMAM](docs/context-view.png)
-
 ## Estructura del proyecto
 
 Este repositorio contiene los siguientes directorios y archivos:
@@ -41,11 +37,9 @@ Este repositorio contiene los siguientes directorios y archivos:
 
 
 ## Prerrequisitos
-- Clonar el repositorio:
-   ```shell
-   $ git clone https://gitlab.com/tareas-arquitectura-de-software-curso/publica-suscribe
-   $ cd publica-subscribe
-   ```
+- Clonar el repositorio que se encuentra en el siguiente URL;
+   https://github.com/JLuisHub/publica-suscribeV2
+
 - Contar con python 3.8 o superior y pip3 (las pruebas fueron realizadas con la versión 3.8). Se recomienda utilizar [pyenv](https://github.com/pyenv/pyenv) como manejador de versiones de python; una vez instalado se pueden seguir los siguientes comandos para instalar la versión deseada de python, esto hay que realizarlo en la raíz del repositorio:
    ```shell
    $ pyenv install 3.8
@@ -88,22 +82,23 @@ Este repositorio contiene los siguientes directorios y archivos:
 
    Paquete | Versión | Descripción
    --------|---------|------------
-   pika   | 1.1.0   | Implementación del protocolo AMQP 0-9-1 y que incuye la extensión de RabbitMQ
    Faker  | 13.3.0  | Generador de datos falsos
    telepot| 12.7    | Api de Telegram
+   stomp.py| 8.1.0 | Biblioteca cliente de Python para acceder a servicios de mensajería, en este caso, activeMQ
 
    *__Nota__: También puedes instalar estos prerrequisitos manualmente ejecutando los siguientes comandos:*   
-   > pip3 install pika== 1.1.0
+   > pip3 install stomp.py==8.1.0
    > pip3 install Faker==13.3.0
    > pip3 install telepot==12.7
 
-- Instalamos RabbitMQ. La manera recomendada para implementar una instancia de RabbitMQ es utilizando [Docker](https://www.docker.com/), para instalarlo puedes seguir las instrucciones para cada sistema operativo haciendo clic [aquí](https://docs.docker.com/install/). Una vez instalado docker podemos ejecutar el siguiente comando:
+- Instalamos activeMQ. La manera recomendada para implementar una instancia de activeMQ es utilizando [Docker](https://www.docker.com/). Una vez instalado docker podemos ejecutar el siguiente comando:
 
     ```shell
-    $ docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3-management
+    $ docker run --name activemq -p 5672:5672 -p 61613:61613 rmohr/activemq
     ```
+    [Link](https://hub.docker.com/r/rmohr/activemq) de la imagen docker utilizada.
 
-    Este comando correrá un contenedor de docker con la imagen de RabbitMQ, el cual seguirá corriendo hasta que sea detenido explícitamente.
+    Este comando correrá un contenedor de docker con la imagen de activeMQ, el cual seguirá corriendo hasta que sea detenido explícitamente.
 
 ## Ejecución
 
