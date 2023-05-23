@@ -34,8 +34,7 @@ def publish(queue, data):
     channel.basic_publish(exchange='', routing_key=queue, body=data, properties=pika.BasicProperties(delivery_mode=2))
     connection.close()
     '''
-    conn = stomp.Connection('localhost')
-    conn.start()
+    conn = stomp.Connection(host_and_ports=[('localhost', 15672)])
     conn.connect()
     conn.send(body=data, destination=queue)
     conn.disconnect()
