@@ -79,10 +79,10 @@ class Notifier:
 
     def consume(self, queue, callback):
         try:
-            conn = stomp.Connection(host_and_ports=[('localhost', 8161)])
+            conn = stomp.Connection(host_and_ports=[('localhost', 15672)])
             conn.set_listener('', callback)
             conn.connect()
-            conn.subscribe(destination=queue, header={}, id="suscriber", atc="client")
+            conn.subscribe(destination=queue, id=1, ack='auto')
             while True:
                 time.sleep(1)
         
