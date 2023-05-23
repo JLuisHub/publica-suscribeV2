@@ -64,6 +64,8 @@
 #-------------------------------------------------------------------------
 import json, time, stomp, sys
 
+from helpers.MessageMonitor import MessageMonitor
+
 class Monitor:
 
     def __init__(self):
@@ -76,15 +78,15 @@ class Monitor:
 
     def consume(self, queue, callback):
         try:
-            conn = stomp.Connection(host_and_ports=[('localhost', 8161)])
+            conn = stomp.Connection([("localhost",15672)])
+            listener = MessageMonitor()
+            conn.set_listener("",listener)
             conn.connect()
             conn.subscribe(destination=queue, id=1, ack='auto')
-            conn.set_listener('', callback)
             while True:
-                pass
+                time.sleep(1)
 
         except (KeyboardInterrupt, SystemExit):
-            #channel.close()
             conn.disconnect()
             sys.exit("Conexión finalizada...")
 

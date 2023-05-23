@@ -80,12 +80,12 @@ class Record:
 
     def consume(self, queue, callback):
         try:
-            conn = stomp.Connection(host_and_ports=[('localhost', 8161)])
+            conn = stomp.Connection(host_and_ports=[('localhost', 15672)])
             conn.connect()
             conn.subscribe(destination=queue, id=1, ack='auto')
             conn.set_listener('', callback)
             while True:
-                pass
+                time.sleep(1)
 
         except (KeyboardInterrupt, SystemExit):
             #channel.close()

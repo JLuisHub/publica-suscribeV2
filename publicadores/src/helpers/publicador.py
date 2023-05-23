@@ -27,7 +27,7 @@
 import stomp
 
 def publish(queue, data):
-    conn = stomp.Connection(host_and_ports=[('localhost', 8161)])
+    conn = stomp.Connection(host_and_ports=[('localhost', 15672)])
     conn.connect()
     conn.send(body=data, destination=queue)
     conn.disconnect()
