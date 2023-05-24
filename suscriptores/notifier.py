@@ -41,7 +41,7 @@ class Notifier:
             conn = stomp.Connection(host_and_ports=[('localhost', 61613)])
             conn.set_listener('callback', Mensaje_alerta(self.token,self.chat_id))
             conn.connect(wait=True)
-            conn.subscribe(destination=queue, headers='', id=1)
+            conn.subscribe(destination=queue, id=1)
             while True:
                 time.sleep(1)
         
