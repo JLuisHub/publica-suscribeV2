@@ -29,9 +29,7 @@ class Notifier:
     def __init__(self):
         self.topic = "notifier"
         self.token = '6123823618:AAHyUAjkloJePnXt9Na-HRCZfk86_oiNRc0'
-
-        #El chat_id es diferente para cada usuario.
-        self.chat_id = "5813006283,"
+        self.chat_id = "5813006283," #El chat_id es diferente para cada usuario
 
     def suscribe(self):
         print("Inicio de gestión de notificaciones...")
