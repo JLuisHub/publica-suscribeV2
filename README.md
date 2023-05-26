@@ -6,6 +6,10 @@ Existe un un lugar llamado Seten en el que viven un grupo de adultos mayores, pa
 
 La comunidad llamada Girls that Code in Python, que es una comunidad altruista en la región, decidió, a manera de donación, desarrollarles un sistema de cómputo para realizar las actividades de monitoreo del estado de salud de los adultos mayores de forma (semi-)automática. Para ello, la comunidad utilizó un conjunto de dispositivos “wearables” que portan cada uno de los adultos mayores. Mediante el envío de información sobre ritmo cardiaco, presión arterial y temperatura, estos dispositivos “wearables” permiten monitorear en tiempo real a cada uno de los adultos mayores y de esta forma ser más eficientes en la prevención de incidencias.
 
+En la siguiente figura se muestra el diseño de la propuesta de solución del departamento de desarrollo para el SMAM.
+
+![Vista de contenedores del SMAM](docs/context-view.png)
+
 ## Estructura del proyecto
 
 Este repositorio contiene los siguientes directorios y archivos:
